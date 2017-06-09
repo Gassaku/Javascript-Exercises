@@ -1,0 +1,15 @@
+Read through the script written at the bottom of the drumkit.html file
+to see how a class has been created to handle the keydown window event.
+When the event fires a CSS class is applied to selected Div elements
+then removed once the transition of the CSS class ends.
+
+Next, you need to create another class that also gets used by the window's
+keydown event to select an 'audio' element based on the key pressed. The
+selected audio element then needs to be played, which can easily be done
+by using the .play() method on the selected element.
+
+Make sure you create a new branch for your implementation and push it up
+to the repository when you're finished. Then create a pull request so I can
+review it and merge it into master if everything checks out!
+
+Here's a working demo to see how the div animations work, https://codepen.io/rnice01/pen/bREzby
