@@ -58,6 +58,37 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
+  
+  class DivSoundProducer {
+
+    constructor(){
+
+      const beat = Array.from(document.querySelectorAll('audio'));
+      const keys = Array.from(document.querySelectorAll('.key'));
+      keys.forEach(beat => addEventListener('transitioned', (e) => {this.handleKeyElementTransitionEvent(e)}));
+    }
+
+    handleWindowKeyDownEvent(e){
+
+        this.keyElement = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        if(!this.keyElement) return;
+        this.playKeyElement();//beat producer
+    }
+
+    handleKeyElementTransitionEvent(e) {
+      if (e.propertyName !== 'transform') return;
+      e.target.pause();
+    }
+
+    playKeyElement(){
+        if(this.keyElement)
+        console.log(this.keyElement);
+            this.keyElement.play();
+
+    }
+
+  }
+
     
 
   class DivAnimator {
@@ -66,7 +97,7 @@
     constructor() {
       // Select all of the div elements with the (CSS) class of 'key'
       const keys = Array.from(document.querySelectorAll('.key'));
-
+      
       // For each div element we queried for, attach a transitionend event
       // when this event fires, our handleKeyElementTransitionEvent method gets called
       keys.forEach(key => addEventListener('transitionend', (e) => {this.handleKeyElementTransitionEvent(e)}));
@@ -104,12 +135,13 @@
 
   }
   
-
+  divSoundProducer = new DivSoundProducer();
   divAnimator = new DivAnimator();
   window.addEventListener('keydown', function(e) {
     
     // On keydown event, we pass the event to our class instance
     divAnimator.handleWindowKeyDownEvent(e);
+    divSoundProducer.handleWindowKeyDownEvent(e);
   });
   </script>
 
