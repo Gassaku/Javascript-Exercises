@@ -58,36 +58,7 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
-  
-  class DivSoundProducer {
 
-    constructor(){
-
-      const audios = Array.from(document.querySelectorAll('audio'));
-      const keys = Array.from(document.querySelectorAll('.key'));
-      keys.forEach(key => addEventListener('transitioned', (e) => {this.handleKeyElementTransitionEvent(e)}));
-    }
-
-    handleWindowKeyDownEvent(e){
-
-        this.keyElement = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-        if(!this.keyElement) return;
-        this.playKeyElement();//beat producer
-    }
-
-    handleKeyElementTransitionEvent(e) {
-      if (e.propertyName !== 'transform') return;
-      e.target.pause();
-    }
-
-    playKeyElement(){
-        if(this.keyElement)
-        console.log(this.keyElement);
-            this.keyElement.play();
-
-    }
-
-  }
 
     
 
